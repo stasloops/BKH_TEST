@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import "./Modal.scss";
+import "./modal.scss";
 
 interface ModalProps {
   title: string;
