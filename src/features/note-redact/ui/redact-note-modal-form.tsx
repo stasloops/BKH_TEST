@@ -2,11 +2,18 @@ import { Modal } from "@/shared/ui";
 import { NoteForm } from "@/widgets/note-form";
 import { useNoteRedactStore } from "../model";
 import { useNotesStore } from "@/entities/note";
+import { useDisableScroll } from "../hooks/useDisableScroll";
 
 export const RedactNoteModalForm = () => {
   const { editingNoteId, setEditingNoteId } = useNoteRedactStore();
   const { notes, updateNote } = useNotesStore();
 
+  useDisableScroll(editingNoteId);
+
+  if (!editingNoteId) {
+    return null;
+  }
+  
   const getEditingNote = () => {
     return notes.find((note) => note.id === editingNoteId);
   };

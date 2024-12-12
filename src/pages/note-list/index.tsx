@@ -10,7 +10,7 @@ import {
 export const NoteList = () => {
   const { notes, isLoading, fetchNotes, deleteNote, updateNote } =
     useNotesStore();
-  const { editingNoteId, setEditingNoteId } = useNoteRedactStore();
+  const { setEditingNoteId } = useNoteRedactStore();
   const [searchParams, setSearchParams] = useSearchParams();
   const [filterCompleted, setFilterCompleted] = useState(false);
 
@@ -43,7 +43,7 @@ export const NoteList = () => {
   return (
     <>
       <h1>Список заметок</h1>
-      
+
       {!isLoading ? (
         <NoteTable
           notes={filteredNotes}
@@ -56,7 +56,7 @@ export const NoteList = () => {
         <div>Loading...</div>
       )}
 
-      {editingNoteId !== null && <RedactNoteModalForm />}
+      <RedactNoteModalForm />
     </>
   );
 };
